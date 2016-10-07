@@ -1,31 +1,18 @@
 package projecteuler1
 
-import scala.io.StdIn.readLine
-
 /*
-Sample Input
+If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
 
-2
-10
-100
-Sample Output
-
-23
-2318
+Find the sum of all the multiples of 3 or 5 below 1000.
  */
 object ProjectEuler1 {
-  def nReadLineInts(n: Int): Seq[Int] = {
-    Range(0, n).map(x => readLine).map(_.toInt)
-  }
-
   def fizzBuzz(n: Int): Seq[Int] = {
-    Range(0, n).filter(x => x % 3 == 0 || x % 5 == 0)
+    (0 until n).view.filter(x => x % 3 == 0 || x % 5 == 0)
   }
 
-  def main(args: Array[String]) {
-    val n: Int = readLine().toInt
-    val ints = nReadLineInts(n)
-
-    val res = ints.map(x => fizzBuzz(x).sum).map(println)
+  // 1000
+  def run(n: Int) {
+    val res = fizzBuzz(n).sum
+    println(res)
   }
 }
